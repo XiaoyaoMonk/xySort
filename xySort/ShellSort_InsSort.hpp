@@ -1,15 +1,15 @@
 #ifndef XY_SHELL_SORT
 #define	XY_SHELL_SORT
 
-//Ê¹ÓÃ´Ëº¯ÊıÊ±µÚÒ»¸ö²ÎÊı±ØĞëÊÇÖ§³ÖËæ»úµü´úÆ÷£¬²¢ÇÒÆäµü´úÆ÷±ØĞëÖ§³Ö¡°+¡±²Ù×÷·ûÖØÔØ
+//ä½¿ç”¨æ­¤å‡½æ•°æ—¶ç¬¬ä¸€ä¸ªå‚æ•°å¿…é¡»æ˜¯æ”¯æŒéšæœºè¿­ä»£å™¨ï¼Œå¹¶ä¸”å…¶è¿­ä»£å™¨å¿…é¡»æ”¯æŒâ€œ+â€æ“ä½œç¬¦é‡è½½
 //The first parameter to use this function must be support for random iterators, and its iterator must support "+" operator overloading
 
-//±¾Ä£°åÖĞÊ¹ÓÃµÄÔöÁ¿ĞòÁĞÊÇ Hibbard Ìá³öµÄ 2^k - 1
+//æœ¬æ¨¡æ¿ä¸­ä½¿ç”¨çš„å¢é‡åºåˆ—æ˜¯ Hibbard æå‡ºçš„ 2^k - 1
 //The incremental sequence used in this template is 2^k - 1 proposed by Hibbard
 
-//insertMem º¯Êı£º
-//ÔÚÊı¾İÁ¿³¬´óµÄÇé¿öÏÂ£¬º¯ÊıµÄ³öÈëÕ»½«Õ¼ÓÃºÜ¶à×ÊÔ´
-//Òò´Ë´Ë´¦½«ÆäÒ»¸öºêº¯Êı insertMem
+//insertMem å‡½æ•°ï¼š
+//åœ¨æ•°æ®é‡è¶…å¤§çš„æƒ…å†µä¸‹ï¼Œå‡½æ•°çš„å‡ºå…¥æ ˆå°†å ç”¨å¾ˆå¤šèµ„æº
+//å› æ­¤æ­¤å¤„å°†å…¶ä¸€ä¸ªå®å‡½æ•° insertMem
 //insertMem function
 //In the case of a large amount of data, the pushing and popping of functions will occupy a lot of resources
 //So here is one of its macro functions, insertMem
@@ -29,12 +29,12 @@ void shellSort(datasType& datas)
 	if (datasSize == 0 || datasSize == 1)
 		return;
 	
-	//Ò»°ãÇé¿öÏÂ£¬ÎÒÃÇ±£Ö¤×î´óÔöÁ¿Ê±£¬Ã¿¸ö·Ö×éÓĞÁ½¸öÔªËØ£¬´Ë´¦ÏÈÈ·¶¨×î´óÔöÁ¿
-	//ÒòÎª×î´óÔöÁ¿ Step_max > datas.size()/2 Ê±£¬ÒâÒå²»´ó¡£
-	//ÁíÍâ£¬²ÉÈ¡ Hibbard Ìá³öµÄ 2^k - 1 ÔöÁ¿Ê±£¬ÔöÁ¿Ëõ¼õ¹«Ê½Îª£ºStep=(Step+1)/2-1 
-	//²»Í¬ÓÚ Step = Step / 2 ×ÜÄÜÓĞStep = 1 µÄÊ±ºò£¬µ«ÊÇ Step=(Step+1)/2-1 Ã»ÓĞ¡£
-	//Ö´ĞĞÇ° Step = 2 Ê±£¬Step=(Step+1)/2-1 µÄ½á¹ûÎª 0 £¬Ö±½Ó½áÊøÁËÑ­»·
-	//´ËÊ±Êı¾İÓĞ¿ÉÄÜ»¹Ã»ÓĞÅÅºÃĞò£¬ËùÒÔ±ØĞëÊ¹ÓÃ¹«Ê½ÏÈÈ·¶¨ºÃ×î´óÔöÁ¿£¬È»ºó½«¸ÃÔöÁ¿´øÈëÑ­»·¡£
+	//ä¸€èˆ¬æƒ…å†µä¸‹ï¼Œæˆ‘ä»¬ä¿è¯æœ€å¤§å¢é‡æ—¶ï¼Œæ¯ä¸ªåˆ†ç»„æœ‰ä¸¤ä¸ªå…ƒç´ ï¼Œæ­¤å¤„å…ˆç¡®å®šæœ€å¤§å¢é‡
+	//å› ä¸ºæœ€å¤§å¢é‡ Step_max > datas.size()/2 æ—¶ï¼Œæ„ä¹‰ä¸å¤§ã€‚
+	//å¦å¤–ï¼Œé‡‡å– Hibbard æå‡ºçš„ 2^k - 1 å¢é‡æ—¶ï¼Œå¢é‡ç¼©å‡å…¬å¼ä¸ºï¼šStep=(Step+1)/2-1 
+	//ä¸åŒäº Step = Step / 2 æ€»èƒ½æœ‰Step = 1 çš„æ—¶å€™ï¼Œä½†æ˜¯ Step=(Step+1)/2-1 æ²¡æœ‰ã€‚
+	//æ‰§è¡Œå‰ Step = 2 æ—¶ï¼ŒStep=(Step+1)/2-1 çš„ç»“æœä¸º 0 ï¼Œç›´æ¥ç»“æŸäº†å¾ªç¯
+	//æ­¤æ—¶æ•°æ®æœ‰å¯èƒ½è¿˜æ²¡æœ‰æ’å¥½åºï¼Œæ‰€ä»¥å¿…é¡»ä½¿ç”¨å…¬å¼å…ˆç¡®å®šå¥½æœ€å¤§å¢é‡ï¼Œç„¶åå°†è¯¥å¢é‡å¸¦å…¥å¾ªç¯ã€‚
 	//In general, when we guarantee the maximum increment, each group has two elements. Here we determine the maximum increment first.
 	//Because the maximum increment 'Step_max> datas.size () / 2' is not significant.
 	//Unlike 'Step = Step / 2' there can always be 'Step = 1', but 'Step = (Step + 1) / 2-1' does not.
@@ -46,21 +46,21 @@ void shellSort(datasType& datas)
 		Step = (Step + 1) * 2 - 1;
 	}
 
-	//¿ªÊ¼ÔöÁ¿Ëõ¼õµÄÑ­»·
+	//å¼€å§‹å¢é‡ç¼©å‡çš„å¾ªç¯
 	//Start the cycle of incremental reduction
 	for (Step; Step > 0; Step = (Step + 1) / 2 - 1)
 	{
-		//±éÀú·Ö×é£¬¶ÔÃ¿¸ö·Ö×é½øĞĞÅÅĞò
-		//´Ë´¦²ÉÈ¡µÄ·½·¨ÊÇ£¬½« datas[Step] µ½×îºóÒ»¸öÔªËØ½øĞĞ±éÀú
-		//¶ÔÓÚÃ¿¸öÔªËØÔÚÆäËùÔÚ·Ö×éÄÚ½øĞĞĞÔÅÅĞò
+		//éå†åˆ†ç»„ï¼Œå¯¹æ¯ä¸ªåˆ†ç»„è¿›è¡Œæ’åº
+		//æ­¤å¤„é‡‡å–çš„æ–¹æ³•æ˜¯ï¼Œå°† datas[Step] åˆ°æœ€åä¸€ä¸ªå…ƒç´ è¿›è¡Œéå†
+		//å¯¹äºæ¯ä¸ªå…ƒç´ åœ¨å…¶æ‰€åœ¨åˆ†ç»„å†…è¿›è¡Œæ€§æ’åº
 		//Iterate through the groups and sort each group
 		//The approach taken here is to iterate through datas [Step] to the last element
 		//Sort each element sexually within its group
 
-		//ÎªÁË±ãÓÚÀí½â£¬Èç¹û¶ÔÓÚ for (int memCur = Step; memCur < datasSize; ++memCur) Õâ¾ä»°±È½ÏÒÉ»ó£¬ÇëÏêÏ¸ÔÄ¶ÁÏÂÃæµÄ×¢ÊÍ
-		//Ï£¶ûÅÅĞòÖĞ¶ÔÓÚÃ¿Ò»¸ö·Ö×éÄÚµÄÅÅĞòÊ¹ÓÃµÄ¶¼ÊÇ²åÈëÅÅĞò·½·¨
-		//²åÈëÅÅĞòµÄ²Ù×÷ÔªËØÊÇ´Ó ±àºÅÎª 1 µÄÔªËØ¿ªÊ¼µÄ
-		//¶ø´Ó Step ¿ªÊ¼£¬ÆäºóµÄÃ¿Ò»¸öÔªËØÔÚÆä·Ö×éÄÚµÄ±àºÅ¶¼ >=1¡£
+		//ä¸ºäº†ä¾¿äºç†è§£ï¼Œå¦‚æœå¯¹äº for (int memCur = Step; memCur < datasSize; ++memCur) è¿™å¥è¯æ¯”è¾ƒç–‘æƒ‘ï¼Œè¯·è¯¦ç»†é˜…è¯»ä¸‹é¢çš„æ³¨é‡Š
+		//å¸Œå°”æ’åºä¸­å¯¹äºæ¯ä¸€ä¸ªåˆ†ç»„å†…çš„æ’åºä½¿ç”¨çš„éƒ½æ˜¯æ’å…¥æ’åºæ–¹æ³•
+		//æ’å…¥æ’åºçš„æ“ä½œå…ƒç´ æ˜¯ä» ç¼–å·ä¸º 1 çš„å…ƒç´ å¼€å§‹çš„
+		//è€Œä» Step å¼€å§‹ï¼Œå…¶åçš„æ¯ä¸€ä¸ªå…ƒç´ åœ¨å…¶åˆ†ç»„å†…çš„ç¼–å·éƒ½ >=1ã€‚
 		//For the sake of understanding, if you are confused about the sentence ------
 		//"for (int memCur = Step; memCur <datasSize; ++ memCur)", please read the comments below
 		//In Shell sort, the sorting method in each group uses the insert sort method.
@@ -68,7 +68,7 @@ void shellSort(datasType& datas)
 		//Starting from Step, each element after it is numbered in its group '> = 1'
 		for (int memCur = Step; memCur < datasSize; memCur++)
 		{
-			//²åÈëº¯Êı£¬ÓÃÓÚ½« datas[memCur] ²åÈëµ½ËùÔÚ·Ö×éµÄÕıÈ·Î»ÖÃ
+			//æ’å…¥å‡½æ•°ï¼Œç”¨äºå°† datas[memCur] æ’å…¥åˆ°æ‰€åœ¨åˆ†ç»„çš„æ­£ç¡®ä½ç½®
 			//Insert function to insert 'datas[memCur]' into the correct position of the group
 			insertMem(datas, Step, memCur);
 		}
@@ -83,16 +83,16 @@ void insertSort(datasType& datas)
 	int i = 0;
 	int j = 0;
 
-	//Íâ²ãÑ­»·£º±éÀú datas[1] ¡« datas[datas.size() - 1]
-	//ÀıÈç:	µÚÒ»´Î²Ù×÷£¬½« datas[1] È¡³ö£¬È»ºóÓÃËüºÍ datas[0] ±È½Ï²¢Íê³É²åÈë¶¯×÷
-	//		µÚ¶ş´Î²Ù×÷£¬½« datas[2] È¡³ö£¬È»ºóÓÃËüºÍ datas[0]¡¢datas[1]±È½Ï£¬²¢Íê³É²åÈë¶¯×÷
+	//å¤–å±‚å¾ªç¯ï¼šéå† datas[1] ï½ datas[datas.size() - 1]
+	//ä¾‹å¦‚:	ç¬¬ä¸€æ¬¡æ“ä½œï¼Œå°† datas[1] å–å‡ºï¼Œç„¶åç”¨å®ƒå’Œ datas[0] æ¯”è¾ƒå¹¶å®Œæˆæ’å…¥åŠ¨ä½œ
+	//		ç¬¬äºŒæ¬¡æ“ä½œï¼Œå°† datas[2] å–å‡ºï¼Œç„¶åç”¨å®ƒå’Œ datas[0]ã€datas[1]æ¯”è¾ƒï¼Œå¹¶å®Œæˆæ’å…¥åŠ¨ä½œ
 	for (i = 1; i < datasSize; ++i)
 	{
-		//Ê¹ÓÃÁÙÊ±±äÁ¿±£´æ datas[i]
+		//ä½¿ç”¨ä¸´æ—¶å˜é‡ä¿å­˜ datas[i]
 		tempData = datas[i];
 
-		//Ê¹ÓÃ tempData ºÍ datas[0]¡«datas[i-1]±È½Ï£¨´ÓÓÒÖÁ×ó£©
-		//Èç¹û tempData < datas[j]Ê±£¬datas[j+1] = datas[j];ÔªËØÏòÓÒÒÆ¶¯Ò»¸öÎ»ÖÃ
+		//ä½¿ç”¨ tempData å’Œ datas[0]ï½datas[i-1]æ¯”è¾ƒï¼ˆä»å³è‡³å·¦ï¼‰
+		//å¦‚æœ tempData < datas[j]æ—¶ï¼Œdatas[j+1] = datas[j];å…ƒç´ å‘å³ç§»åŠ¨ä¸€ä¸ªä½ç½®
 		for (j = i-1; j >= 0 && tempData < datas[j]; --j)
 		{
 			datas[j + 1] = datas[j];
@@ -101,52 +101,52 @@ void insertSort(datasType& datas)
 	}
 }
 
-//¶ş·Ö²åÈëÅÅĞò
+//äºŒåˆ†æ’å…¥æ’åº
 template<class datasType>
 void binaryInsertSort(datasType& datas)
 {
 	auto tempData = datas[0];
-	//±£´æÔªËØ¼¯ºÏµÄÊıÁ¿
+	//ä¿å­˜å…ƒç´ é›†åˆçš„æ•°é‡
 	size_t datasSize = datas.size();
 	
 	size_t i = 0;
 	size_t j = 0;
 	size_t left = 0;
 	size_t right = 0;
-	//ÓëÖ±½Ó²åÈëÅÅĞòÓĞµã²»Í¬£¬Ç°Õß¿ÉÒÔÒ»±ß±È½ÏÒ»±ßÒÆ¶¯ÔªËØ
-	//±È½ÏÒ»´Î£¬ÒÆ¶¯Ò»´ÎÔªËØ£¬Ö±µ½ÕÒµ½datas[i]µÄÕıÈ·Î»ÖÃÔÙ½«datas[i] ·ÅÖÃµ½¸ÃÎ»ÖÃ¡£
-	//Ò²¿ÉÒÔÏÈ²éÕÒ£¬ÔÙÒ»´ÎĞÔÍê³ÉÔªËØµÄÒÆ¶¯ºÍ²åÈë¡£
-	//µ«ÊÇ¶ş·Ö²åÈëÅÅĞòµÄ×ö·¨µÄÓÅ»¯µãÔÚÓÚÖ±½ÓºÍÇ°ÃæÒÑÅÅºÃĞòµÄÔªËØµÄÖĞÖµ½øĞĞ±È½Ï£¬Ò»´ÎÅÅ³ıÒ»°ëµÄÔªËØ
-	//Òò´Ë¶ş·Ö²åÈëÅÅĞò±ØĞëÏÈ²éÕÒÔÙ½øĞĞÔªËØµÄÒÆ¶¯ºÍ²åÈë
+	//ä¸ç›´æ¥æ’å…¥æ’åºæœ‰ç‚¹ä¸åŒï¼Œå‰è€…å¯ä»¥ä¸€è¾¹æ¯”è¾ƒä¸€è¾¹ç§»åŠ¨å…ƒç´ 
+	//æ¯”è¾ƒä¸€æ¬¡ï¼Œç§»åŠ¨ä¸€æ¬¡å…ƒç´ ï¼Œç›´åˆ°æ‰¾åˆ°datas[i]çš„æ­£ç¡®ä½ç½®å†å°†datas[i] æ”¾ç½®åˆ°è¯¥ä½ç½®ã€‚
+	//ä¹Ÿå¯ä»¥å…ˆæŸ¥æ‰¾ï¼Œå†ä¸€æ¬¡æ€§å®Œæˆå…ƒç´ çš„ç§»åŠ¨å’Œæ’å…¥ã€‚
+	//ä½†æ˜¯äºŒåˆ†æ’å…¥æ’åºçš„åšæ³•çš„ä¼˜åŒ–ç‚¹åœ¨äºç›´æ¥å’Œå‰é¢å·²æ’å¥½åºçš„å…ƒç´ çš„ä¸­å€¼è¿›è¡Œæ¯”è¾ƒï¼Œä¸€æ¬¡æ’é™¤ä¸€åŠçš„å…ƒç´ 
+	//å› æ­¤äºŒåˆ†æ’å…¥æ’åºå¿…é¡»å…ˆæŸ¥æ‰¾å†è¿›è¡Œå…ƒç´ çš„ç§»åŠ¨å’Œæ’å…¥
 	
-	//Íâ²ãÑ­»·£ºµ±Ç°ĞèÒª½øĞĞ²åÈëµÄÔªËØÔÚ²åÈëÇ°µÄÎ»ÖÃ i
+	//å¤–å±‚å¾ªç¯ï¼šå½“å‰éœ€è¦è¿›è¡Œæ’å…¥çš„å…ƒç´ åœ¨æ’å…¥å‰çš„ä½ç½® i
 	for (i = 1; i < datasSize; ++i)
 	{
-		//ÏÈÓÃÁÙÊ±±äÁ¿±£´æµ±Ç°´ı²åÈëµÄÔªËØ datas[i]
+		//å…ˆç”¨ä¸´æ—¶å˜é‡ä¿å­˜å½“å‰å¾…æ’å…¥çš„å…ƒç´  datas[i]
 		tempData = datas[i];
 
-		//²éÕÒÑ­»·
+		//æŸ¥æ‰¾å¾ªç¯
 		left = 0;
-		//ÎªÁË¿¼ÂÇµ±Ç°×îÌØÊâµÄÇé¿ö£¬¼´ tempData Ó¦µ±²åÔÚ i µÄÎ»ÖÃÉÏ
-		//¼´´Ë´Î²åÈë¶¯×÷Ã»ÓĞ·¢ÉúÔªËØµÄÒÆ¶¯Ê±£¬Ó¦µ±½« right ³õÊ¼ÖµÉèÎª i
+		//ä¸ºäº†è€ƒè™‘å½“å‰æœ€ç‰¹æ®Šçš„æƒ…å†µï¼Œå³ tempData åº”å½“æ’åœ¨ i çš„ä½ç½®ä¸Š
+		//å³æ­¤æ¬¡æ’å…¥åŠ¨ä½œæ²¡æœ‰å‘ç”Ÿå…ƒç´ çš„ç§»åŠ¨æ—¶ï¼Œåº”å½“å°† right åˆå§‹å€¼è®¾ä¸º i
 		right = i;
 		while (left != right)
 		{
-			//tempDataÓ¦¸ÃÂäÔÚÓÒ°ëÇø¼ä£¬ÔòÌáÉıÏÂÏŞ
-			//¼ÙÈç tempData = datas[(left + right) / 2])
-			//tempData µÄ²åÈëÎ»ÖÃÒ»¶¨ÔÚ (left+right)/2 µÄºóÃæ£¬Òò´Ë£º
+			//tempDataåº”è¯¥è½åœ¨å³åŠåŒºé—´ï¼Œåˆ™æå‡ä¸‹é™
+			//å‡å¦‚ tempData = datas[(left + right) / 2])
+			//tempData çš„æ’å…¥ä½ç½®ä¸€å®šåœ¨ (left+right)/2 çš„åé¢ï¼Œå› æ­¤ï¼š
 			if (tempData >= datas[(left + right) / 2])
 				left = (left + right) / 2 + 1;
-			//tempDataÓ¦¸ÃÂäÔÚ×ó°ëÇø¼ä£¬Ôò½µµÍÉÏÏŞ
-			//µ± tempData < datas[(left + right) / 2]Ê±
-			//tempData µÄ²åÈëÎ»ÖÃÒÀÈ»ÓĞ¿ÉÄÜÊÇ (left+right)/2£¨²»¿ÉÄÜÊÇ (left+right)/2 µÄÓÒ±ß£©
-			//Òò´Ë£¬ÓÒ±ß½çÉèÎª£¨left + right) / 2;
+			//tempDataåº”è¯¥è½åœ¨å·¦åŠåŒºé—´ï¼Œåˆ™é™ä½ä¸Šé™
+			//å½“ tempData < datas[(left + right) / 2]æ—¶
+			//tempData çš„æ’å…¥ä½ç½®ä¾ç„¶æœ‰å¯èƒ½æ˜¯ (left+right)/2ï¼ˆä¸å¯èƒ½æ˜¯ (left+right)/2 çš„å³è¾¹ï¼‰
+			//å› æ­¤ï¼Œå³è¾¹ç•Œè®¾ä¸ºï¼ˆleft + right) / 2;
 			else
 				right = (left + right)/ 2;
-		}//µ± left == right Ê±ÍË³öÑ­»·¡£
+		}//å½“ left == right æ—¶é€€å‡ºå¾ªç¯ã€‚
 		j = left;
-		//²åÈëÑ­»·
-		//½« datas[j]¡«datas[i - 1] µÄÔªËØÕûÌåÓÒÒÆ
+		//æ’å…¥å¾ªç¯
+		//å°† datas[j]ï½datas[i - 1] çš„å…ƒç´ æ•´ä½“å³ç§»
 		size_t cur = i;
 		for (cur; cur > j; --cur)
 		{

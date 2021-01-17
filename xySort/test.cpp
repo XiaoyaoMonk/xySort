@@ -1,3 +1,11 @@
+/*
+ * @Author       : yaowenzhou
+ * @Date         : 2021-01-17 14:31:10
+ * @LastEditors  : yaowenzhou
+ * @LastEditTime : 2021-01-17 14:35:10
+ * @version      : 
+ * @Description  : 
+ */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -36,22 +44,22 @@ int main()
 	sort(vArr1.begin(), vArr1.end());
 
 	clock_t start_time = clock();
-	//ÒÔÏÂÊÇÔÚ Êı¾İÁ¿ 100000 µÄÇé¿öÏÂ×öµÄ²âÊÔ
-	//Intel i7 8700 CPU£»16GÄÚ´æ£»Win10 64Î» ²Ù×÷×öÏµÍ³£»Ã»ÓĞ´ò¿ªºÜÕ¼ÓÃÄÚ´æµÄÈí¼ş£»Ö´ĞĞ·½Ê½Îª VS2019 µ÷ÊÔ
-	shellSort(vArr2);//0.2s ¼¶±ğ
-	bubbleSort(vArr2);//330s ×óÓÒ
-	bubbleSortEx(vArr2);//330s ¼¶±ğ
-	mergeSort<vector<int>, int>(vArr2, 0, vArr2.size() - 1);//1s ¼¶±ğ
-	mergeSort<vector<int>, int>(vArr2);//0.5s ¼¶±ğ
-	quickSort(vArr2, 0, vArr2.size() - 1);//0.15s ¼¶±ğ
-	quickSortEX(vArr2, 0, vArr2.size() - 1);//0.1s ¼¶±ğ
-	quickSortNR(vArr2, 0, vArr2.size() - 1);//0.3s ¼¶±ğ
-	selectSort(vArr2);//150s ¼¶±ğ
-	insertSort(vArr2);//122s ¼¶±ğ
-	binaryInsertSort(vArr2);//80s ¼¶±ğ
-	heapSort(vArr2);//0.15s ¼¶±ğ
-	countSort<vector<int>, int>(vArr2);//17s ¼¶±ğ£¬ºÜÎÈ¶¨£¬Êı¾İÁ¿Îª 1000000 Ê±£¬ÒÀ¾ÉÎª 17s ×óÓÒ
-	//¾­Êµ²â±¾ÀıÖĞµÄ countSort ÔÚµ÷ÊÔ×´Ì¬ÏÂĞèÒªºÜ³¤Ê±¼äÔ­ÒòÊÇ try catch µÄ C++ ´íÎó´¦ÀíÕ¼ÓÃÁË´óÁ¿Ê±¼ä
+	//ä»¥ä¸‹æ˜¯åœ¨ æ•°æ®é‡ 100000 çš„æƒ…å†µä¸‹åšçš„æµ‹è¯•
+	//Intel i7 8700 CPUï¼›16Gå†…å­˜ï¼›Win10 64ä½ æ“ä½œåšç³»ç»Ÿï¼›æ²¡æœ‰æ‰“å¼€å¾ˆå ç”¨å†…å­˜çš„è½¯ä»¶ï¼›æ‰§è¡Œæ–¹å¼ä¸º VS2019 è°ƒè¯•
+	shellSort(vArr2);//0.2s çº§åˆ«
+	bubbleSort(vArr2);//330s å·¦å³
+	bubbleSortEx(vArr2);//330s çº§åˆ«
+	mergeSort<vector<int>, int>(vArr2, 0, vArr2.size() - 1);//1s çº§åˆ«
+	mergeSort<vector<int>, int>(vArr2);//0.5s çº§åˆ«
+	quickSort(vArr2, 0, vArr2.size() - 1);//0.15s çº§åˆ«
+	quickSortEX(vArr2, 0, vArr2.size() - 1);//0.1s çº§åˆ«
+	quickSortNR(vArr2, 0, vArr2.size() - 1);//0.3s çº§åˆ«
+	selectSort(vArr2);//150s çº§åˆ«
+	insertSort(vArr2);//122s çº§åˆ«
+	binaryInsertSort(vArr2);//80s çº§åˆ«
+	heapSort(vArr2);//0.15s çº§åˆ«
+	countSort<vector<int>, int>(vArr2);//17s çº§åˆ«ï¼Œå¾ˆç¨³å®šï¼Œæ•°æ®é‡ä¸º 1000000 æ—¶ï¼Œä¾æ—§ä¸º 17s å·¦å³
+	//ç»å®æµ‹æœ¬ä¾‹ä¸­çš„ countSort åœ¨è°ƒè¯•çŠ¶æ€ä¸‹éœ€è¦å¾ˆé•¿æ—¶é—´åŸå› æ˜¯ try catch çš„ C++ é”™è¯¯å¤„ç†å ç”¨äº†å¤§é‡æ—¶é—´
 	clock_t end_time = clock();
 
 	for (int i = 0; i < vArr2.size(); ++i)

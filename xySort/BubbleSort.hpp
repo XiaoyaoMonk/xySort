@@ -1,3 +1,11 @@
+/*
+ * @Author       : yaowenzhou
+ * @Date         : 2021-01-17 14:31:10
+ * @LastEditors  : yaowenzhou
+ * @LastEditTime : 2021-01-17 14:32:17
+ * @version      : 
+ * @Description  : 
+ */
 #ifndef XY_BUBBLE_SORT
 #define	XY_BUBBLE_SORT
 template<class datasType>
@@ -6,8 +14,8 @@ void bubbleSort(datasType& datas)
 	auto tempData = datas[0];
 	for (int i = datas.size() - 1; i >= 1; --i)
 	{
-		//ÄÚ´æÑ­»·£¬±È½ÏÏàÁÚÁ½¸öÊıµÄ´óĞ¡£¬Èç¹û datas[j] > datas[j + 1]£¬Ôò½»»»¶şÕß
-		//Ñ­»·Ö´ĞĞÍê±Ïºó£¬×î´óµÄÔªËØÒÑ¾­ÒÆ¶¯µ½µ±Ç°²Ù×÷µÄ×îÓÒ±ß¡£
+		//å†…å­˜å¾ªç¯ï¼Œæ¯”è¾ƒç›¸é‚»ä¸¤ä¸ªæ•°çš„å¤§å°ï¼Œå¦‚æœ datas[j] > datas[j + 1]ï¼Œåˆ™äº¤æ¢äºŒè€…
+		//å¾ªç¯æ‰§è¡Œå®Œæ¯•åï¼Œæœ€å¤§çš„å…ƒç´ å·²ç»ç§»åŠ¨åˆ°å½“å‰æ“ä½œçš„æœ€å³è¾¹ã€‚
 		for (int j = 0; j < i; ++j)
 		{
 			if (datas[j] > datas[j + 1])
@@ -21,14 +29,14 @@ void bubbleSort(datasType& datas)
 }
 
 
-//ÏÂÃæÊµÏÖÃ°ÅİÅÅĞòµÄÓÅ»¯´úÂë
+//ä¸‹é¢å®ç°å†’æ³¡æ’åºçš„ä¼˜åŒ–ä»£ç 
 template<class datasType>
 void bubbleSortEx(datasType& datas)
 {
 	auto tempData = datas[0];
 	for (int i = datas.size() - 1; i >= 1; --i)
 	{
-		bool hasExchanged = false;//ÏÈ¼ÙÉè´Ë´ÎÍâÑ­»·µÄ¹ı³ÌÖĞ²»»á·¢ÉúÊı¾İ½»»»
+		bool hasExchanged = false;//å…ˆå‡è®¾æ­¤æ¬¡å¤–å¾ªç¯çš„è¿‡ç¨‹ä¸­ä¸ä¼šå‘ç”Ÿæ•°æ®äº¤æ¢
 		for (int j = 0; j < i; ++j)
 		{
 			if (datas[j] > datas[j + 1])
@@ -36,12 +44,12 @@ void bubbleSortEx(datasType& datas)
 				tempData = datas[j];
 				datas[j] = datas[j + 1];
 				datas[j + 1] = tempData;
-				//Ò»µ©·¢ÉúÁËÊı¾İ½»»»£¬Ôò½« hasExchanged ÉèÎª Õæ¡£
+				//ä¸€æ—¦å‘ç”Ÿäº†æ•°æ®äº¤æ¢ï¼Œåˆ™å°† hasExchanged è®¾ä¸º çœŸã€‚
 				hasExchanged = true;
 			}
 		}
-		//Èç¹û±äÁ¿ hasExchanged µÄÖµÎª flase
-		//ÕâËµÃ÷Õâ´ÎÍâ²ãÑ­»·µÄ¹ı³ÌÖĞÃ»ÓĞ·¢ÉúÊı¾İ½»»»£¬ÔòbreakÖÕÖ¹Ñ­»·
+		//å¦‚æœå˜é‡ hasExchanged çš„å€¼ä¸º flase
+		//è¿™è¯´æ˜è¿™æ¬¡å¤–å±‚å¾ªç¯çš„è¿‡ç¨‹ä¸­æ²¡æœ‰å‘ç”Ÿæ•°æ®äº¤æ¢ï¼Œåˆ™breakç»ˆæ­¢å¾ªç¯
 		if (hasExchanged == false)
 			break;
 	}

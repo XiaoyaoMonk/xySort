@@ -1,3 +1,11 @@
+/*
+ * @Author       : yaowenzhou
+ * @Date         : 2021-01-17 14:31:10
+ * @LastEditors  : yaowenzhou
+ * @LastEditTime : 2021-01-17 14:34:36
+ * @version      : 
+ * @Description  : 
+ */
 #ifndef XY_SELECT_SORT
 #define XY_SELECT_SORT
 template<class datasType>
@@ -6,23 +14,23 @@ void selectSort(datasType& datas)
 	size_t datasSize	= datas.size();
 	size_t min		= 0;
 	auto tempData = datas[0];
-	//Íâ²ãÑ­»·£¬Ã¿´ÎÑ­»·¶¼½«µ±Ç°²Ù×÷·¶Î§ÄÚµÄ×îĞ¡ÔªËØÒÆ¶¯µ½²Ù×÷·¶Î§µÄ×îÇ°ÃæµÄÎ»ÖÃ
-	//ÀıÈç£ºµÚÒ»´Î²Ù×÷£¬½« datas[min] ºÍ datas[0] ½»»»
-	//		µÚ¶ş´Î²Ù×÷£¬½«Ê£ÓàÔªËØµÄ datas[min] ºÍ datas[1] ½»»»
+	//å¤–å±‚å¾ªç¯ï¼Œæ¯æ¬¡å¾ªç¯éƒ½å°†å½“å‰æ“ä½œèŒƒå›´å†…çš„æœ€å°å…ƒç´ ç§»åŠ¨åˆ°æ“ä½œèŒƒå›´çš„æœ€å‰é¢çš„ä½ç½®
+	//ä¾‹å¦‚ï¼šç¬¬ä¸€æ¬¡æ“ä½œï¼Œå°† datas[min] å’Œ datas[0] äº¤æ¢
+	//		ç¬¬äºŒæ¬¡æ“ä½œï¼Œå°†å‰©ä½™å…ƒç´ çš„ datas[min] å’Œ datas[1] äº¤æ¢
 	//		......
-	//µ± i = datasSize-1 Ê±£¬Ö»Ê£datasµÄ×îºóÒ»¸öÔªËØ datas[datasSize-1] Ê±
-	//ÆäËüËùÓĞÔªËØ¾ùÒÑÅÅºÃĞò£¬ËùÒÔ´ËÊ± datas[datasSize-1] ¾ÍÊÇ×î´óÖµ
-	//Òò´ËÑ­»·µÄÍË³öÌõ¼şÊÇ i < datasSize-1;  i = datasSize-1Ê±£¬Ñ­»·²»±Ø½øĞĞÁË
+	//å½“ i = datasSize-1 æ—¶ï¼Œåªå‰©datasçš„æœ€åä¸€ä¸ªå…ƒç´  datas[datasSize-1] æ—¶
+	//å…¶å®ƒæ‰€æœ‰å…ƒç´ å‡å·²æ’å¥½åºï¼Œæ‰€ä»¥æ­¤æ—¶ datas[datasSize-1] å°±æ˜¯æœ€å¤§å€¼
+	//å› æ­¤å¾ªç¯çš„é€€å‡ºæ¡ä»¶æ˜¯ i < datasSize-1;  i = datasSize-1æ—¶ï¼Œå¾ªç¯ä¸å¿…è¿›è¡Œäº†
 	for (size_t i = 0; i < datasSize-1; ++i)
 	{
 		min = i;
-		//ÄÚ²ãÑ­»·
-		//¼Ù¶¨µ±Ç°²Ù×÷·¶Î§µÄµÚÒ»¸öÔªËØ datas[i] ¼Ù¶¨Îª×îĞ¡ÔªËØ
-		//¼Ç size_t min = i;
-		//½« datas[min] Óë datas[i+1, datasSize-1] ÖĞµÄÔªËØ½øĞĞ±È½Ï£¬
-		//Èç¹ûÓöµ½ datas[j] < datas[min]£¬Ôò min = j£¬È»ºó¼ÌĞø±È½Ï£¬
-		//Ö±µ½´Ë´ÎÑ­»·Íê³É£¬¼´¿ÉµÃµ½µ±Ç°·¶Î§ÄÚµÄ×îĞ¡ÔªËØ datas[min]
-		//È»ºó½« datas[i] Óë datas[min]½»»»¡£
+		//å†…å±‚å¾ªç¯
+		//å‡å®šå½“å‰æ“ä½œèŒƒå›´çš„ç¬¬ä¸€ä¸ªå…ƒç´  datas[i] å‡å®šä¸ºæœ€å°å…ƒç´ 
+		//è®° size_t min = i;
+		//å°† datas[min] ä¸ datas[i+1, datasSize-1] ä¸­çš„å…ƒç´ è¿›è¡Œæ¯”è¾ƒï¼Œ
+		//å¦‚æœé‡åˆ° datas[j] < datas[min]ï¼Œåˆ™ min = jï¼Œç„¶åç»§ç»­æ¯”è¾ƒï¼Œ
+		//ç›´åˆ°æ­¤æ¬¡å¾ªç¯å®Œæˆï¼Œå³å¯å¾—åˆ°å½“å‰èŒƒå›´å†…çš„æœ€å°å…ƒç´  datas[min]
+		//ç„¶åå°† datas[i] ä¸ datas[min]äº¤æ¢ã€‚
 		for (size_t j = i+1; j < datasSize; ++j)
 		{
 			if (datas[j] < datas[min])

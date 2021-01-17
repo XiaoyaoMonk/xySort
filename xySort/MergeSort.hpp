@@ -3,7 +3,7 @@
 
 #include <vector>
 
-//ÏÈĞ´Ò»¸öµİ¹éµ÷ÓÃµÄ¹é²¢ÅÅĞòËã·¨
+//å…ˆå†™ä¸€ä¸ªé€’å½’è°ƒç”¨çš„å½’å¹¶æ’åºç®—æ³•
 //First write a merge sort algorithm called recursively
 template<class datasType, class dataType>
 void mergeSort(datasType& datas, size_t left, size_t right)
@@ -15,12 +15,12 @@ void mergeSort(datasType& datas, size_t left, size_t right)
 	mergeSort<datasType, dataType>(datas, left, mid);
 	mergeSort<datasType, dataType>(datas, mid + 1, right);
 
-	//¶¨ÒåÒ»¸öĞÂµÄÊı¾İ¼¯ºÏ tempDatas
+	//å®šä¹‰ä¸€ä¸ªæ–°çš„æ•°æ®é›†åˆ tempDatas
 	//Define a new data collection tempDatas
 	vector<dataType> tempDatas;
 	
-	//½«µ±Ç°²Ù×÷µÄÔªËØ¿½±´µ½Õâ¸öĞÂµÄ¼¯ºÏÖĞ
-	//´Ë¹ı³ÌÖĞ»á½«ËüÃÇÅÅºÃĞò
+	//å°†å½“å‰æ“ä½œçš„å…ƒç´ æ‹·è´åˆ°è¿™ä¸ªæ–°çš„é›†åˆä¸­
+	//æ­¤è¿‡ç¨‹ä¸­ä¼šå°†å®ƒä»¬æ’å¥½åº
 	//Copy the elements of the current operation into this new collection
 	//Datas will be sorted in the copy process.
 	size_t iLeft	= left;
@@ -36,7 +36,7 @@ void mergeSort(datasType& datas, size_t left, size_t right)
 	while(iLeft <= mid) tempDatas.push_back(datas[iLeft++]);
 	while(iRight <= right) tempDatas.push_back(datas[iRight++]);
 
-	//½«ĞÂµÄÊı¾İ¼¯ºÏÖØĞÂ¸³Öµ¸ø datas
+	//å°†æ–°çš„æ•°æ®é›†åˆé‡æ–°èµ‹å€¼ç»™ datas
 	//Reassign the new data set to datas
 	for (int i = 0; i <= right - left; ++i)
 	{
@@ -44,7 +44,7 @@ void mergeSort(datasType& datas, size_t left, size_t right)
 	}
 }
 
-//½ÓÏÂÀ´ÔÙĞ´Ò»¸ö·Çµİ¹éµÄ°æ±¾
+//æ¥ä¸‹æ¥å†å†™ä¸€ä¸ªéé€’å½’çš„ç‰ˆæœ¬
 //Next write a non-recursive version
 template<class datasType, class dataType>
 void mergeSort(datasType& datas)
@@ -54,31 +54,31 @@ void mergeSort(datasType& datas)
 	size_t left = 0, right = 0, mid = 0;
 	size_t tempLeft = 0, tempRight = 0;
 	
-	//Íâ²ãÑ­»·£¨i ·Ö±ğÎª 1,2,4,8 ...£©
+	//å¤–å±‚å¾ªç¯ï¼ˆi åˆ†åˆ«ä¸º 1,2,4,8 ...ï¼‰
 	for (size_t mergeSize = 1; mergeSize < (datasSize + 1); mergeSize += mergeSize)
 	{
 
-		//ÄÚ²ãÑ­»·£¬±éÀúĞ¡·Ö×é£¬ÕâĞ©Ğ¡·Ö×é·Ö±ğÊÇ
-		//[0, 2 * mergeSize)¡¢[2 * mergeSize, 4 * mergeSize)¡¢[4 * mergeSize, 6 * mergeSize) ...
+		//å†…å±‚å¾ªç¯ï¼Œéå†å°åˆ†ç»„ï¼Œè¿™äº›å°åˆ†ç»„åˆ†åˆ«æ˜¯
+		//[0, 2 * mergeSize)ã€[2 * mergeSize, 4 * mergeSize)ã€[4 * mergeSize, 6 * mergeSize) ...
 		for (left = 0;	left < datasSize; left += 2*mergeSize)
 		{
 			mid		= left + mergeSize - 1;
 			right	= left + 2 * mergeSize - 1;
-			//ÏÈÇå¿ÕÁÙÊ±µÄÔªËØ¼¯ºÏ£¬²¢ÇÒÉèÖÃÓÃÓÚ·Ö±ğ±íÊ¾×óÓÒ·ÖÇøÖĞÑ­»·µÄ±äÁ¿ tempLeft ºÍ tempRight
+			//å…ˆæ¸…ç©ºä¸´æ—¶çš„å…ƒç´ é›†åˆï¼Œå¹¶ä¸”è®¾ç½®ç”¨äºåˆ†åˆ«è¡¨ç¤ºå·¦å³åˆ†åŒºä¸­å¾ªç¯çš„å˜é‡ tempLeft å’Œ tempRight
 			tempDatas.clear();
 			tempLeft	= left;
 			tempRight	= mid + 1;
-			//½«×óÓÒ·ÖÇøµÄÊı¾İ¿½±´µ½ÁÙÊ±µÄÊı¾İ¼¯ºÏ£¬´Ë¹ı³Ì»áÍê³ÉÅÅĞò
-			//ÒòÎªÑ­»·¿ØÖÆÌõ¼şÖĞ£ºleft < datasSize£¬Òò´Ë×ó·ÖÇøµÄÆğµãÓÀÔ¶ Ğ¡ÓÚdatasSize£¬´Ë´¦¿É²»±ØÅĞ¶Ï
-			//ÓÒ·ÖÇøµÄÆğµãÈç¹û´óÓÚ»òÕßµÈÓÚ datasSize£¬ÔòÖ»ĞèÒªÖ±½Ó½«×ó·ÖÇøµÄÄÚÈİ¿½±´ÖÁÁÙÊ±ÔªËØ¼¯ºÏ¼´¿É
+			//å°†å·¦å³åˆ†åŒºçš„æ•°æ®æ‹·è´åˆ°ä¸´æ—¶çš„æ•°æ®é›†åˆï¼Œæ­¤è¿‡ç¨‹ä¼šå®Œæˆæ’åº
+			//å› ä¸ºå¾ªç¯æ§åˆ¶æ¡ä»¶ä¸­ï¼šleft < datasSizeï¼Œå› æ­¤å·¦åˆ†åŒºçš„èµ·ç‚¹æ°¸è¿œ å°äºdatasSizeï¼Œæ­¤å¤„å¯ä¸å¿…åˆ¤æ–­
+			//å³åˆ†åŒºçš„èµ·ç‚¹å¦‚æœå¤§äºæˆ–è€…ç­‰äº datasSizeï¼Œåˆ™åªéœ€è¦ç›´æ¥å°†å·¦åˆ†åŒºçš„å†…å®¹æ‹·è´è‡³ä¸´æ—¶å…ƒç´ é›†åˆå³å¯
 			if (mid + 1 >= datasSize)
 			{
 				while (tempLeft < datasSize) tempDatas.push_back(datas[tempLeft++]);
 			}
 			else
 			{
-				//ÓÉÓÚ´æÔÚ tempLeft <= mid < mid+1 <= tempRightµÄ¹ØÏµ
-				//¶ø mid + 1 >= datasSize µÄÇé¿öÏÂÒÑ±»ÅÅ³ı£¬Òò´Ë´Ë´¦Ö»ĞèÅĞ¶Ï tempRight ºÍ datasSizeµÄ¹ØÏµ 
+				//ç”±äºå­˜åœ¨ tempLeft <= mid < mid+1 <= tempRightçš„å…³ç³»
+				//è€Œ mid + 1 >= datasSize çš„æƒ…å†µä¸‹å·²è¢«æ’é™¤ï¼Œå› æ­¤æ­¤å¤„åªéœ€åˆ¤æ–­ tempRight å’Œ datasSizeçš„å…³ç³» 
 				while (tempLeft <= mid && tempRight <= right && tempRight < datasSize)
 				{
 					if (datas[tempLeft] <= datas[tempRight])
@@ -90,8 +90,8 @@ void mergeSort(datasType& datas)
 						tempDatas.push_back(datas[tempRight++]);
 					}
 				}
-				//ÖÕ½áÑ­»·µÄÌõ¼şÊÇ×óÓÒ·ÖÇøÓĞÒ»¸öÒÑ¾­´ïµ½ÁËÆäÓÒ±ß½ç
-				//´ËÊ±ÓÃÒ»¸öÑ­»·Ö±½Ó½«Ã»ÓĞ´ïµ½±ß½çµÄ·Ö×éµÄÊı¾İÒÀ´Î¿½±´µ½ tempDatas ÖĞ¡£
+				//ç»ˆç»“å¾ªç¯çš„æ¡ä»¶æ˜¯å·¦å³åˆ†åŒºæœ‰ä¸€ä¸ªå·²ç»è¾¾åˆ°äº†å…¶å³è¾¹ç•Œ
+				//æ­¤æ—¶ç”¨ä¸€ä¸ªå¾ªç¯ç›´æ¥å°†æ²¡æœ‰è¾¾åˆ°è¾¹ç•Œçš„åˆ†ç»„çš„æ•°æ®ä¾æ¬¡æ‹·è´åˆ° tempDatas ä¸­ã€‚
 				while (tempLeft <= mid)
 				{
 					tempDatas.push_back(datas[tempLeft++]);
@@ -101,7 +101,7 @@ void mergeSort(datasType& datas)
 					tempDatas.push_back(datas[tempRight++]);
 				}
 			}
-			//½«ËùÓĞÁÙÊ±Êı¾İ¼¯ºÏÖĞµÄÔªËØÒÀ´Î¿½±´µ½datasÖĞ
+			//å°†æ‰€æœ‰ä¸´æ—¶æ•°æ®é›†åˆä¸­çš„å…ƒç´ ä¾æ¬¡æ‹·è´åˆ°datasä¸­
 			for (int i = 0; i < tempDatas.size(); ++i)
 				datas[left + i] = tempDatas[i];
 		}

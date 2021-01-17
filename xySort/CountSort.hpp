@@ -1,3 +1,11 @@
+/*
+ * @Author       : yaowenzhou
+ * @Date         : 2021-01-17 14:31:10
+ * @LastEditors  : yaowenzhou
+ * @LastEditTime : 2021-01-17 14:32:46
+ * @version      : 
+ * @Description  : 
+ */
 #ifndef XY_COUNT_SORT
 #define XY_COUNT_SORT
 
@@ -10,36 +18,36 @@
 template <class datasType, class dataType>
 void countSort(datasType& datas)
 {
-	//´óÖÂË¼Â·£º
-	//¼ÆÊıÅÅĞò²»ÊÇºÜºÃĞ´£¬Õë¶Ô int¡¢char¡¢long Ö®ÀàµÄÕûÊı±È½ÏºÃĞ´
-	//µ«ÊÇÕë¶Ô×Ô¶¨ÒåµÄÊı¾İÀàĞÍ£¨ÆäÅÅĞòÊÇÍ¨¹ı×Ô¶¨ÒåµÄ±È½Ï¹æÔòÀ´½øĞĞ´óĞ¡±È½ÏµÄÅÅĞò£©£¬Ôò²»ÊÇºÜºÃĞ´
-	//ÎªÁËÄÜ¹»´ïµ½·ºĞÍµÄÄ¿µÄ£¬´Ë´¦ĞèÒªÊ¹ÓÃ unorder_map<dataType, int> datasMap ±£´æÃ¿Ò»¸ö¶ÀÌØÔªËØµÄÊıÁ¿
+	//å¤§è‡´æ€è·¯ï¼š
+	//è®¡æ•°æ’åºä¸æ˜¯å¾ˆå¥½å†™ï¼Œé’ˆå¯¹ intã€charã€long ä¹‹ç±»çš„æ•´æ•°æ¯”è¾ƒå¥½å†™
+	//ä½†æ˜¯é’ˆå¯¹è‡ªå®šä¹‰çš„æ•°æ®ç±»å‹ï¼ˆå…¶æ’åºæ˜¯é€šè¿‡è‡ªå®šä¹‰çš„æ¯”è¾ƒè§„åˆ™æ¥è¿›è¡Œå¤§å°æ¯”è¾ƒçš„æ’åºï¼‰ï¼Œåˆ™ä¸æ˜¯å¾ˆå¥½å†™
+	//ä¸ºäº†èƒ½å¤Ÿè¾¾åˆ°æ³›å‹çš„ç›®çš„ï¼Œæ­¤å¤„éœ€è¦ä½¿ç”¨ unorder_map<dataType, int> datasMap ä¿å­˜æ¯ä¸€ä¸ªç‹¬ç‰¹å…ƒç´ çš„æ•°é‡
 	/************
-		Ê¹ÓÃ unorder_map ĞèÒªÓÃµ½ hash_value() º¯Êı£¬´ó¶àÊıÀàĞÍ¶¼ÓĞ×Ô´øµÄ hash_value() º¯Êı
-		Òò´Ë×Ô¶¨ÒåÊı¾İÀàĞÍ±ØĞëÖØÔØ hash_value() º¯Êı
-		ÁíÍâ£¬Éæ¼°µ½±È½Ï²Ù×÷£¬ËùÒÔ»¹ĞèÒªÖØÔØÏÂÁĞ²Ù×÷·ûº¯Êı
-		operator< ¡¢ operator<= ¡¢ operator> ¡¢operator>= ¡¢ operator==
+		ä½¿ç”¨ unorder_map éœ€è¦ç”¨åˆ° hash_value() å‡½æ•°ï¼Œå¤§å¤šæ•°ç±»å‹éƒ½æœ‰è‡ªå¸¦çš„ hash_value() å‡½æ•°
+		å› æ­¤è‡ªå®šä¹‰æ•°æ®ç±»å‹å¿…é¡»é‡è½½ hash_value() å‡½æ•°
+		å¦å¤–ï¼Œæ¶‰åŠåˆ°æ¯”è¾ƒæ“ä½œï¼Œæ‰€ä»¥è¿˜éœ€è¦é‡è½½ä¸‹åˆ—æ“ä½œç¬¦å‡½æ•°
+		operator< ã€ operator<= ã€ operator> ã€operator>= ã€ operator==
 	*************/
-	//ÒÔĞèÒªÅÅĞòµÄ datas ÖĞµÄÔªËØ×÷Îª¼üÖµ£¬¸ÃÔªËØ³öÏÖµÄ´ÎÊı×÷Îª value ´æÈë datasMap
-	//½« datas ÖĞµÄËùÓĞ ¶ÀÌØÔªËØ ´æ´¢µ½ dataVector ÖĞ
-	//½« dataVector ½øĞĞÅÅĞò£¬È»ºóÔÙ±éÀú dataVector
-	//Í¨¹ı dataVector µÄÔªËØ×÷Îª¼üÖµ£¬²éÑ¯ datasMap ÖĞ¸Ã¼üÖµ¶ÔÓ¦µ½ ¡°value¡±£¬ÔÚÔ´À´µÄÔªËØ¼¯ºÏÖĞÖØĞÂ½øĞĞ¸´ÖÆ
+	//ä»¥éœ€è¦æ’åºçš„ datas ä¸­çš„å…ƒç´ ä½œä¸ºé”®å€¼ï¼Œè¯¥å…ƒç´ å‡ºç°çš„æ¬¡æ•°ä½œä¸º value å­˜å…¥ datasMap
+	//å°† datas ä¸­çš„æ‰€æœ‰ ç‹¬ç‰¹å…ƒç´  å­˜å‚¨åˆ° dataVector ä¸­
+	//å°† dataVector è¿›è¡Œæ’åºï¼Œç„¶åå†éå† dataVector
+	//é€šè¿‡ dataVector çš„å…ƒç´ ä½œä¸ºé”®å€¼ï¼ŒæŸ¥è¯¢ datasMap ä¸­è¯¥é”®å€¼å¯¹åº”åˆ° â€œvalueâ€ï¼Œåœ¨æºæ¥çš„å…ƒç´ é›†åˆä¸­é‡æ–°è¿›è¡Œå¤åˆ¶
 
-	//¼ÆÊıÅÅĞòĞèÒªÓÃµ½ unordered_map ÀàĞÍµÄÊı¾İ½á¹¹
+	//è®¡æ•°æ’åºéœ€è¦ç”¨åˆ° unordered_map ç±»å‹çš„æ•°æ®ç»“æ„
 	unordered_map<dataType, size_t> datasMap = { {datas[0], 1} };
 	vector<dataType> dataVector(1, datas[0]);
 
 	size_t datasSize = datas.size();
 	for (size_t i = 1; i < datasSize; ++i)
 	{
-		//³¢ÊÔ½«¼üÖµ datas[i] datasMap ÖĞ¶ÔÓ¦µÄ value + 1
+		//å°è¯•å°†é”®å€¼ datas[i] datasMap ä¸­å¯¹åº”çš„ value + 1
 		try
 		{
 			datasMap.at(datas[i]) += 1;
 		}
-		//Èç¹û¼üÖµ "datas[i]" ÔÚ datasMap ÖĞÉĞÎ´´æÔÚ£¬try ÖĞµÄÓï¾ä¿é½«»áÅ×³ö out_of_range ÀàĞÍµÄÒì³£
-		//²¶»ñÕâ¸öÒì³££¬½«ĞÂµÄ¶ÀÌØÔªËØ×÷Îª¼üÖµ£¬Æä value ±»ÉèÎª1£¬È»ºó²åÈë datasMap
-		//Í¬Ê±£¬Ö´ĞĞ dataVector.push_back(datas[i]); ²Ù×÷£¬µÈ datas ±éÀúÍêÖ®ºó£¬ÆäËùÓĞµÄ¶ÀÌØÔªËØ¾ùÒÑ´æ´¢ÔÚ dataVector ÖĞ
+		//å¦‚æœé”®å€¼ "datas[i]" åœ¨ datasMap ä¸­å°šæœªå­˜åœ¨ï¼Œtry ä¸­çš„è¯­å¥å—å°†ä¼šæŠ›å‡º out_of_range ç±»å‹çš„å¼‚å¸¸
+		//æ•è·è¿™ä¸ªå¼‚å¸¸ï¼Œå°†æ–°çš„ç‹¬ç‰¹å…ƒç´ ä½œä¸ºé”®å€¼ï¼Œå…¶ value è¢«è®¾ä¸º1ï¼Œç„¶åæ’å…¥ datasMap
+		//åŒæ—¶ï¼Œæ‰§è¡Œ dataVector.push_back(datas[i]); æ“ä½œï¼Œç­‰ datas éå†å®Œä¹‹åï¼Œå…¶æ‰€æœ‰çš„ç‹¬ç‰¹å…ƒç´ å‡å·²å­˜å‚¨åœ¨ dataVector ä¸­
 		catch (std::out_of_range& exc)
 		{
 			datasMap.insert({ datas[i], 1 });
@@ -47,10 +55,10 @@ void countSort(datasType& datas)
 		}
 	}
 	
-	//½« dataVector ÅÅĞò£¬´Ë´¦ĞèÒªÓÃµ½ÆäËüÅÅĞò·½·¨£¬´Ë°¸ÀıÖĞÑ¡ÓÃµÄÊÇ HeapSort ¶ÑÅÅĞò
+	//å°† dataVector æ’åºï¼Œæ­¤å¤„éœ€è¦ç”¨åˆ°å…¶å®ƒæ’åºæ–¹æ³•ï¼Œæ­¤æ¡ˆä¾‹ä¸­é€‰ç”¨çš„æ˜¯ HeapSort å †æ’åº
 	heapSort(dataVector);
-	//È»ºó±éÀú dataVector£¬¸ù¾İ ÆäÖĞµÄÔªËØÔÚ Ô´Êı¾İ¼¯ºÏ datas ÖĞ³öÏÖµÄ´ÎÊı(¼ü dataVector[i] ÔÚ datasMap ÖĞµÄ value)ÒÀ´Î¶Ô Ô´Êı¾İ¼¯ºÏ datas ½øĞĞÌî³ä
-	//ÀıÈç dataVector[0] ÔÚ datasMap ÖĞµÄÖµÎª 2£¬ËµÃ÷ dataVector[0] Ó¦¸ÃÔÚ datas ÖĞÌî³äÁ½´Î
+	//ç„¶åéå† dataVectorï¼Œæ ¹æ® å…¶ä¸­çš„å…ƒç´ åœ¨ æºæ•°æ®é›†åˆ datas ä¸­å‡ºç°çš„æ¬¡æ•°(é”® dataVector[i] åœ¨ datasMap ä¸­çš„ value)ä¾æ¬¡å¯¹ æºæ•°æ®é›†åˆ datas è¿›è¡Œå¡«å……
+	//ä¾‹å¦‚ dataVector[0] åœ¨ datasMap ä¸­çš„å€¼ä¸º 2ï¼Œè¯´æ˜ dataVector[0] åº”è¯¥åœ¨ datas ä¸­å¡«å……ä¸¤æ¬¡
 	size_t datasCur = 0;
 	for (size_t dvCur = 0; dvCur < dataVector.size(); ++dvCur)
 	{

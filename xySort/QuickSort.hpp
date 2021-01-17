@@ -14,17 +14,17 @@ void quickSort(datasType& datas, int left, int right)
 	
 	auto tempData = datas[0];
 
-	//ÓĞÖÖ¼«¶ËÇé¿ö£¬Ã¿´Î·Ö¸îÊ±£¬¶¼ÓĞÒ»±ßµÄÔªËØÊıÁ¿Îª0
-	//ÎªÁË¾¡Á¿ÅÅ³ıÕâÖÖ¼«¶ËÇé¿ö
-	//²úÉúÎ»ÓÚ left ºÍ right Ö®¼äµÄËæ»úÊı£¬ÓÃÀ´×÷ÎªÖĞÖáÔªËØµÄÏÂ±ê
-	//È»ºó½«ÆäÓë datas[left]»¥»»
+	//æœ‰ç§æç«¯æƒ…å†µï¼Œæ¯æ¬¡åˆ†å‰²æ—¶ï¼Œéƒ½æœ‰ä¸€è¾¹çš„å…ƒç´ æ•°é‡ä¸º0
+	//ä¸ºäº†å°½é‡æ’é™¤è¿™ç§æç«¯æƒ…å†µ
+	//äº§ç”Ÿä½äº left å’Œ right ä¹‹é—´çš„éšæœºæ•°ï¼Œç”¨æ¥ä½œä¸ºä¸­è½´å…ƒç´ çš„ä¸‹æ ‡
+	//ç„¶åå°†å…¶ä¸ datas[left]äº’æ¢
 	srand((int)time(0));
 	int parten = left + rand() % (right - left + 1);
 	tempData = datas[left];
 	datas[left] = datas[parten];
 	datas[parten] = tempData;
 	
-	//iLeft ºÍ iRightÓÃÀ´´Ó×óµ½ÓÒºÍ´ÓÓÒµ½×ó½øĞĞ±éÀú
+	//iLeft å’Œ iRightç”¨æ¥ä»å·¦åˆ°å³å’Œä»å³åˆ°å·¦è¿›è¡Œéå†
 	int iLeft = left + 1;
 	int iRight = right;
 	int center = 0;
@@ -49,22 +49,22 @@ void quickSort(datasType& datas, int left, int right)
 		datas[iLeft] = datas[iRight];
 		datas[iRight] = tempData;
 	}
-	//Ñ­»·ÍË³öµÄÌõ¼ş
-	//1¡¢Ã»ÓĞ·¢Éú½»»»¶øÍË³ö£º
-	//		´ËÊ±Èç¹û iLeft == right + 1£¬ÔòËµÃ÷ËùÓĞÔªËØ¾ù <= datas[left]
-	//			ĞèÒª½« datas[left]·ÅÔÚ×îÓÒ±ß£¨right(´ËÊ±iRight == right£©µÄÎ»ÖÃÉÏ£©
+	//å¾ªç¯é€€å‡ºçš„æ¡ä»¶
+	//1ã€æ²¡æœ‰å‘ç”Ÿäº¤æ¢è€Œé€€å‡ºï¼š
+	//		æ­¤æ—¶å¦‚æœ iLeft == right + 1ï¼Œåˆ™è¯´æ˜æ‰€æœ‰å…ƒç´ å‡ <= datas[left]
+	//			éœ€è¦å°† datas[left]æ”¾åœ¨æœ€å³è¾¹ï¼ˆright(æ­¤æ—¶iRight == rightï¼‰çš„ä½ç½®ä¸Šï¼‰
 	//				exchange(datas[left], datas[iRight])
-	//		´ËÊ±Èç¹û iRight == left£¬ÔòËµÃ÷ËùÓĞÔªËØ¾ù >= datas[left]
-	//			²»ĞèÒªÒÆ¶¯Êı¾İ£¬µ«ÊÇexchange(datas[left], datas[iRight])ÒÀÈ»Ã»ÎÊÌâ
-	//2¡¢·¢ÉúÁË½»»»¶øÍË³ö£º
-	//		ÔÚÍË³öÇ°Ò»´ÎÑ­»·ÖĞ£¬Ò»¶¨·¢ÉúÁËÊı¾İ½»»»£¬´ËÊ±ÔÚ½øĞĞ×îºóÒ»´ÎÑ­»·ÖĞ£¬Á½¸öÄÚ²¿ while µÄÌõ¼ş¾ù³ÉÁ¢£¬
-	//	Çë×¢Òâ£¬ÕâÊÇ×îºóÒ»´ÎÑ­»·£¬Òò´Ë£¬Ò»¶¨»á³öÏÖ iLeft >= iRight µÄÇé¿ö¡£
-	//	²»¹ÜÊÇ iLeft µÄÓÒÒÆµ¼ÖÂÁË iLeft >= iRight£¬»¹ÊÇ iRight µÄ×óÒÆµ¼ÖÂÁË iLeft >= iRight
-	//	¶¼´æÔÚÕâÑùµÄ¹ØÏµ£ºdatas[iRight] >= datas[left]£¬
-	//	Òò´Ë exchange(datas[left], datas[iRight]) ÊÇOKµÄ¡£
+	//		æ­¤æ—¶å¦‚æœ iRight == leftï¼Œåˆ™è¯´æ˜æ‰€æœ‰å…ƒç´ å‡ >= datas[left]
+	//			ä¸éœ€è¦ç§»åŠ¨æ•°æ®ï¼Œä½†æ˜¯exchange(datas[left], datas[iRight])ä¾ç„¶æ²¡é—®é¢˜
+	//2ã€å‘ç”Ÿäº†äº¤æ¢è€Œé€€å‡ºï¼š
+	//		åœ¨é€€å‡ºå‰ä¸€æ¬¡å¾ªç¯ä¸­ï¼Œä¸€å®šå‘ç”Ÿäº†æ•°æ®äº¤æ¢ï¼Œæ­¤æ—¶åœ¨è¿›è¡Œæœ€åä¸€æ¬¡å¾ªç¯ä¸­ï¼Œä¸¤ä¸ªå†…éƒ¨ while çš„æ¡ä»¶å‡æˆç«‹ï¼Œ
+	//	è¯·æ³¨æ„ï¼Œè¿™æ˜¯æœ€åä¸€æ¬¡å¾ªç¯ï¼Œå› æ­¤ï¼Œä¸€å®šä¼šå‡ºç° iLeft >= iRight çš„æƒ…å†µã€‚
+	//	ä¸ç®¡æ˜¯ iLeft çš„å³ç§»å¯¼è‡´äº† iLeft >= iRightï¼Œè¿˜æ˜¯ iRight çš„å·¦ç§»å¯¼è‡´äº† iLeft >= iRight
+	//	éƒ½å­˜åœ¨è¿™æ ·çš„å…³ç³»ï¼šdatas[iRight] >= datas[left]ï¼Œ
+	//	å› æ­¤ exchange(datas[left], datas[iRight]) æ˜¯OKçš„ã€‚
 	tempData = datas[left];
 	datas[left] = datas[iRight];
-	datas[iRight] = tempData;//iRightµÄÎ»ÖÃÒÑÅÅºÃĞò
+	datas[iRight] = tempData;//iRightçš„ä½ç½®å·²æ’å¥½åº
 
 	quickSort(datas, left, iRight - 1);
 	quickSort(datas, iRight + 1, right);
@@ -78,10 +78,10 @@ void quickSortEX(datasType& datas, int left, int right)
 		return;
 	}
 
-	//ÓĞÖÖ¼«¶ËÇé¿ö£¬Ã¿´Î·Ö¸îÊ±£¬¶¼ÓĞÒ»±ßµÄÔªËØÊıÁ¿Îª0
-	//ÎªÁË¾¡Á¿ÅÅ³ıÕâÖÖ¼«¶ËÇé¿ö
-	//²úÉúÎ»ÓÚ left ºÍ right Ö®¼äµÄËæ»úÊı£¬ÓÃÀ´×÷ÎªÖĞÖáÔªËØµÄÏÂ±ê
-	//È»ºó½«ÆäÓë datas[left]»¥»»
+	//æœ‰ç§æç«¯æƒ…å†µï¼Œæ¯æ¬¡åˆ†å‰²æ—¶ï¼Œéƒ½æœ‰ä¸€è¾¹çš„å…ƒç´ æ•°é‡ä¸º0
+	//ä¸ºäº†å°½é‡æ’é™¤è¿™ç§æç«¯æƒ…å†µ
+	//äº§ç”Ÿä½äº left å’Œ right ä¹‹é—´çš„éšæœºæ•°ï¼Œç”¨æ¥ä½œä¸ºä¸­è½´å…ƒç´ çš„ä¸‹æ ‡
+	//ç„¶åå°†å…¶ä¸ datas[left]äº’æ¢
 	srand((int)time(0));
 	int parten = left + rand() % (right - left + 1);
 	auto tempData = datas[left];
@@ -91,15 +91,15 @@ void quickSortEX(datasType& datas, int left, int right)
 	int iLeft = left;
 	int iRight = right;
 
-	//ÓÅ»¯Ëã·¨
-	//ÏÈÊ¹ÓÃ tempData ±£´æ datas[left]£¬½«leftµÄÎ»ÖÃÇå¿Õ
-	//Step1¡¢´ÓÓÒÏò×ó¿ªÊ¼±éÀú£¬Óöµ½ < tempData µÄÔªËØ£¬Ôò½«ÆäÒÆµ½×ó±ß¡¾¸³Öµ¸ø iLeft£¨³õÊ¼ÖµÎªleft£©¡¿
-	//Step2¡¢´Ó×óÏòÓÒ¿ªÊ¼±éÀú£¬Óöµ½ > tempData µÄÔªËØ£¬Ôò½«ÆäÒÆµ½ÓÒ±ß¡¾¸³Öµ¸ø iRight£¨³õÊ¶ÖµÎª right£©¡¿
-	//		Step1ÖĞµÄ¶¯×÷±ØÈ»»á½« iRight µÄÎ»ÖÃÉÏÌÚ³öÀ´¡£Step2 ÖĞµÄ¶¯×÷±ØÈ»»á½« iLeft µÄÎ»ÖÃÌÚ³öÀ´
-	//ÖØ¸´Step1 ºÍ Step2£¬Ö±µ½ iLeft == iRight
+	//ä¼˜åŒ–ç®—æ³•
+	//å…ˆä½¿ç”¨ tempData ä¿å­˜ datas[left]ï¼Œå°†leftçš„ä½ç½®æ¸…ç©º
+	//Step1ã€ä»å³å‘å·¦å¼€å§‹éå†ï¼Œé‡åˆ° < tempData çš„å…ƒç´ ï¼Œåˆ™å°†å…¶ç§»åˆ°å·¦è¾¹ã€èµ‹å€¼ç»™ iLeftï¼ˆåˆå§‹å€¼ä¸ºleftï¼‰ã€‘
+	//Step2ã€ä»å·¦å‘å³å¼€å§‹éå†ï¼Œé‡åˆ° > tempData çš„å…ƒç´ ï¼Œåˆ™å°†å…¶ç§»åˆ°å³è¾¹ã€èµ‹å€¼ç»™ iRightï¼ˆåˆè¯†å€¼ä¸º rightï¼‰ã€‘
+	//		Step1ä¸­çš„åŠ¨ä½œå¿…ç„¶ä¼šå°† iRight çš„ä½ç½®ä¸Šè…¾å‡ºæ¥ã€‚Step2 ä¸­çš„åŠ¨ä½œå¿…ç„¶ä¼šå°† iLeft çš„ä½ç½®è…¾å‡ºæ¥
+	//é‡å¤Step1 å’Œ Step2ï¼Œç›´åˆ° iLeft == iRight
 
-	//ÌØÊâÇé¿ö£ºiRight == right == iLeft »òÕß iLeft == left == iRight
-	//´ËÊ±£º	tempData×î´ó»òÕß×îĞ¡£¬½«Æä¸³Öµ¸ø iLeft£¬OK
+	//ç‰¹æ®Šæƒ…å†µï¼šiRight == right == iLeft æˆ–è€… iLeft == left == iRight
+	//æ­¤æ—¶ï¼š	tempDataæœ€å¤§æˆ–è€…æœ€å°ï¼Œå°†å…¶èµ‹å€¼ç»™ iLeftï¼ŒOK
 	tempData = datas[left];
 	while (iLeft < iRight)
 	{
@@ -108,28 +108,28 @@ void quickSortEX(datasType& datas, int left, int right)
 			--iRight;
 		}
 		datas[iLeft] = datas[iRight];
-		//1¡¢µ± iRight > iLeft,´Ë²Ù×÷»áµ¼ÖÂiLeftµÄµÚÒ»´ÎÑ­»·ÖĞiLeft+1
-		//2.2.2¡¢iRight > iLeftÔò×ª×¢ÊÍ¡°1¡±£»iRight == iLeft£¬ÔòÔÚÉÏÒ»´ÎÑ­»·µÄ×îºó£¬iLeft µÄÎ»ÖÃ±»ÌÚ¿Õ£¬
-		//ÆäÄÚµÄÔªËØ±»±£´æÔÚÉÏÒ»´ÎÑ­»·½áÊøÊ±µÄiRightÖĞ£¬´Ë¸³ÖµÓï¾äÃ»ÓĞÒâÒå£¬²¢ÇÒÏÂÒ»Ìõ¸³ÖµÓï¾äÒ²Ã»ÓĞÒâÒå
-		//ÍË³öÑ­»·ºó£¬½«×î¿ªÊ¼µÄdatas[left](tempData)±£´æÔÚ datas[iLeft]£¬²¢ÇÒÆäÎ»ÖÃÒÑ¾­±»ÅÅºÃĞò
+		//1ã€å½“ iRight > iLeft,æ­¤æ“ä½œä¼šå¯¼è‡´iLeftçš„ç¬¬ä¸€æ¬¡å¾ªç¯ä¸­iLeft+1
+		//2.2.2ã€iRight > iLeftåˆ™è½¬æ³¨é‡Šâ€œ1â€ï¼›iRight == iLeftï¼Œåˆ™åœ¨ä¸Šä¸€æ¬¡å¾ªç¯çš„æœ€åï¼ŒiLeft çš„ä½ç½®è¢«è…¾ç©ºï¼Œ
+		//å…¶å†…çš„å…ƒç´ è¢«ä¿å­˜åœ¨ä¸Šä¸€æ¬¡å¾ªç¯ç»“æŸæ—¶çš„iRightä¸­ï¼Œæ­¤èµ‹å€¼è¯­å¥æ²¡æœ‰æ„ä¹‰ï¼Œå¹¶ä¸”ä¸‹ä¸€æ¡èµ‹å€¼è¯­å¥ä¹Ÿæ²¡æœ‰æ„ä¹‰
+		//é€€å‡ºå¾ªç¯åï¼Œå°†æœ€å¼€å§‹çš„datas[left](tempData)ä¿å­˜åœ¨ datas[iLeft]ï¼Œå¹¶ä¸”å…¶ä½ç½®å·²ç»è¢«æ’å¥½åº
 
 		while (iLeft < iRight && datas[iLeft] <= tempData)
 		{
 			++iLeft;
 		}
 		datas[iRight] = datas[iLeft];
-		//2.1¡¢´ËÊ±Èç¹ûiLeft == iRight£¬Ôò´ËÓï¾äÃ»ÓĞÈÎºÎÒâÒå
-		//2.1.1¡¢ÒòÎªiLeft(==iRight)µÄÖµÒÑ¾­±£´æÔÚ "iLeft-1"ÖĞ´ÎÊ±ÍË³öÑ­»·£¬datas[iLeft]Î»ÖÃ±»ÌÚ³öÀ´ÁË£¬Æä×ó±ßµÄÔªËØÈ«²¿ <=tempData£¬ÓÒ±ßµÄÔªËØ¶¼ >=tempData
-		//2.1.2¡¢½«×î³õÄÃ³öÀ´µÄdatas[left](tempData)±£´æÔÚ´ËÎ»ÖÃ£¬²¢ÇÒÆäÎ»ÖÃÒÑ¾­ÅÅºÃĞò
-		//2.2.1¡¢´ËÊ±Èç¹û iLeft > iRight£¬Ôò±Ø¶¨µ¼ÖÂÏÂÒ»´ÎÍâÑ­»·Ê± iRight -1
+		//2.1ã€æ­¤æ—¶å¦‚æœiLeft == iRightï¼Œåˆ™æ­¤è¯­å¥æ²¡æœ‰ä»»ä½•æ„ä¹‰
+		//2.1.1ã€å› ä¸ºiLeft(==iRight)çš„å€¼å·²ç»ä¿å­˜åœ¨ "iLeft-1"ä¸­æ¬¡æ—¶é€€å‡ºå¾ªç¯ï¼Œdatas[iLeft]ä½ç½®è¢«è…¾å‡ºæ¥äº†ï¼Œå…¶å·¦è¾¹çš„å…ƒç´ å…¨éƒ¨ <=tempDataï¼Œå³è¾¹çš„å…ƒç´ éƒ½ >=tempData
+		//2.1.2ã€å°†æœ€åˆæ‹¿å‡ºæ¥çš„datas[left](tempData)ä¿å­˜åœ¨æ­¤ä½ç½®ï¼Œå¹¶ä¸”å…¶ä½ç½®å·²ç»æ’å¥½åº
+		//2.2.1ã€æ­¤æ—¶å¦‚æœ iLeft > iRightï¼Œåˆ™å¿…å®šå¯¼è‡´ä¸‹ä¸€æ¬¡å¤–å¾ªç¯æ—¶ iRight -1
 	}
 	datas[iLeft] = tempData;
 	quickSortEX(datas, left, iLeft - 1);
 	quickSortEX(datas, iLeft + 1, right);
 }
 
-//quickSortNR£ºquickSortN0-Recursion
-//¿ìËÙÅÅĞòµÄ·Çµİ¹éĞÎÊ½£¬²ÉÈ¡¶ÓÁĞµÄĞÎÊ½
+//quickSortNRï¼šquickSortN0-Recursion
+//å¿«é€Ÿæ’åºçš„éé€’å½’å½¢å¼ï¼Œé‡‡å–é˜Ÿåˆ—çš„å½¢å¼
 #include <utility>
 #include <queue>
 template<class datasType>
@@ -144,8 +144,8 @@ void quickSortNR(datasType& datas, int left, int right)
 	int parten = 0;
 	auto tempData = datas[left];
 
-	//ÒÔµ±Ç°Òª²Ù×÷µÄÔªËØµÄ left ºÍ right ¹¹Ôì´´½¨pair¶ÔÏó£¬È»ºóÑ¹Èë¶Ó
-	//pairµÄ first ÔªËØÎª µ±Ç°Ñ­»·µÄ·¶Î§µÄ×ó±ß½ç£¬second ÔªËØÎªÓÒ±ß½ç
+	//ä»¥å½“å‰è¦æ“ä½œçš„å…ƒç´ çš„ left å’Œ right æ„é€ åˆ›å»ºpairå¯¹è±¡ï¼Œç„¶åå‹å…¥é˜Ÿ
+	//pairçš„ first å…ƒç´ ä¸º å½“å‰å¾ªç¯çš„èŒƒå›´çš„å·¦è¾¹ç•Œï¼Œsecond å…ƒç´ ä¸ºå³è¾¹ç•Œ
 	queue<pair<int, int> > quickSortQueue;
 	pair<int, int> tempPair(left, right);
 	quickSortQueue.push(tempPair);
@@ -161,24 +161,24 @@ void quickSortNR(datasType& datas, int left, int right)
 		if (tempPair.first >= tempPair.second)
 			continue;
 
-		//¶ÔÈ¡³öµÄ×ó±ß½çºÍÓÒ±ß½çÖ®¼äµÄÔªËØ½øĞĞ¿ìÅÅ
-		//ÓÃstart ºÍ end ±£´æ×óÓÒ±ß½ç
+		//å¯¹å–å‡ºçš„å·¦è¾¹ç•Œå’Œå³è¾¹ç•Œä¹‹é—´çš„å…ƒç´ è¿›è¡Œå¿«æ’
+		//ç”¨start å’Œ end ä¿å­˜å·¦å³è¾¹ç•Œ
 		start = tempPair.first;
 		end = tempPair.second;
 
-		//Ê×ÏÈËæ»úÉú³ÉÒ»¸öÊı£¬ÓÃÓÚ±íÊ¾ÖĞÖáÔªËØµÄÏÂ±ê£¬È»ºó½«ÆäÓëstart»»Î»
+		//é¦–å…ˆéšæœºç”Ÿæˆä¸€ä¸ªæ•°ï¼Œç”¨äºè¡¨ç¤ºä¸­è½´å…ƒç´ çš„ä¸‹æ ‡ï¼Œç„¶åå°†å…¶ä¸startæ¢ä½
 		parten = start + rand() % (end - start + 1);
 		tempData = datas[start];
 		datas[start] = datas[parten];
 		datas[parten] = tempData;
 
-		//¿ªÊ¼¿ìÅÅ
-		//Ê¹ÓÃÁÙÊ±±äÁ¿±£´æ datas[start];
+		//å¼€å§‹å¿«æ’
+		//ä½¿ç”¨ä¸´æ—¶å˜é‡ä¿å­˜ datas[start];
 		tempData = datas[start];
-		//½«Ñ­»·±äÁ¿ÖØÖÃÎª start ºÍ end
+		//å°†å¾ªç¯å˜é‡é‡ç½®ä¸º start å’Œ end
 		iLeft = start;
 		iRight = end;
-		//¿ªÊ¼½»»»ÔªËØµÄÑ­»·
+		//å¼€å§‹äº¤æ¢å…ƒç´ çš„å¾ªç¯
 		while (iLeft < iRight)
 		{
 			while (iRight > iLeft && datas[iRight] >= tempData)
@@ -193,9 +193,9 @@ void quickSortNR(datasType& datas, int left, int right)
 			}
 			datas[iRight] = datas[iLeft];
 		}
-		datas[iLeft] = tempData;//iLeft µÄÎ»ÖÃÒÑÅÅºÃĞò
+		datas[iLeft] = tempData;//iLeft çš„ä½ç½®å·²æ’å¥½åº
 
-		//½«ÒòÎª iLeft ÅÅĞò¶ø²úÉúµÄĞÂµÄÔªËØ¼¯ºÏµÄ×óÓÒ±ß½ç×é³É pair<int, int>ÀàĞÍµÄ¶ÔÏó£¬²¢ÇÒÈë¶Ó
+		//å°†å› ä¸º iLeft æ’åºè€Œäº§ç”Ÿçš„æ–°çš„å…ƒç´ é›†åˆçš„å·¦å³è¾¹ç•Œç»„æˆ pair<int, int>ç±»å‹çš„å¯¹è±¡ï¼Œå¹¶ä¸”å…¥é˜Ÿ
 		tempPair = { start, iLeft - 1 };
 		quickSortQueue.push(tempPair);
 		tempPair = { iLeft + 1,end };
